@@ -5,4 +5,4 @@ My p5.js playground is a (work in progress) simple website to play a little bit 
 ## List of projects
 
 * [Index](http://dreamingechoes.github.io/my-p5js-playground)
-* [Hello world!](http://dreamingechoes.github.io/my-p5js-playground/projects/hello-world.html)
+* [Hello world!](http://dreamingechoes.github.io/my-p5js-playground/projects/helloworld.html)
