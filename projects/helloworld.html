@@ -10,6 +10,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
 
     <link rel="stylesheet" href="../dist/css/main.min.css">
+
+    <!-- Code highlight -->
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
   </head>
 
   <body>
@@ -30,9 +33,32 @@
         <div class="inner">
           <h1>Hello World!</h1>
 
-          <p>This kind of 'Hello World!' example just draw 20 random circles on the canvas.</p>
+          <div class="paragraph">This kind of 'Hello World!' example just draw 20 random circles on the canvas. The simplest way to start with p5.js. Refresh the page to get other new 20 random circles.</div>
 
           <div id="canvas"></div>
+
+          <div class="paragraph">Here is the code of the <b>sketch.js</b> file that handle the behavior of this example (you can see all the details on the <a href="https://github.com/dreamingechoes/my-p5js-playground/tree/master/src/vendor/p5js/helloworld">Github repository</a>):</div>
+
+          <pre>
+            <code class="javascript">
+  function setup() {
+    // Create the canvas
+    var canvas = createCanvas(720, 400);
+    canvas.parent('canvas');
+
+    // Set fill color to black
+    background(0);
+    fill(255);
+
+    // Create 20 random circles to draw
+    for(var i = 0; i < 20; i++) {
+      var rx = random(720) + 1;
+      var ry = random(400) + 1;
+      ellipse(rx, ry, 20, 20);
+    }
+  }
+            </code>
+          </pre>
         </div>
       </div>
 
@@ -66,4 +92,6 @@
   <script src="../dist/p5js/source/addons/p5.dom.js"></script>
   <script src="../dist/p5js/source/addons/p5.sound.js"></script>
   <script src="../dist/p5js/helloworld/sketch.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
 </html>
