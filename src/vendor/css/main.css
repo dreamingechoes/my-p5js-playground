@@ -1,5 +1,3 @@
-@import url("http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,700,900");
-
 /*
 Phantom by HTML5 UP
 html5up.net | @n33co
@@ -1222,7 +1220,7 @@ body.is-loading *, body.is-loading *:before, body.is-loading *:after {
 
 body, input, select, textarea {
   color: #585858;
-  font-family: "Source Sans Pro", Helvetica, sans-serif;
+  font-family: Hack, monospace;
   font-size: 16pt;
   font-weight: 300;
   line-height: 1.75;
@@ -1244,10 +1242,10 @@ a {
   transition: border-bottom-color 0.2s ease, color 0.2s ease;
   text-decoration: none;
   color: #585858;
-  border-bottom: dotted 1px rgba(88, 88, 88, 0.5);
 }
 a:hover {
   border-bottom-color: transparent;
+  text-decoration: underline;
   color: #f01b51 !important;
 }
 strong, b {
@@ -1266,6 +1264,9 @@ h1 {
   margin: 0 0 1em 0;
   letter-spacing: -0.035em;
 }
+h1.project-title {
+  text-decoration: underline;
+}
 h1 a {
   color: inherit;
 }
@@ -1283,7 +1284,7 @@ h1 a {
 h2, h3, h4, h5, h6 {
   font-weight: 900;
   line-height: 1.5;
-  margin: 0 0 2em 0;
+  margin: 0 0 1em 0;
   text-transform: uppercase;
   letter-spacing: 0.35em;
 }
@@ -2427,7 +2428,7 @@ body.is-menu-visible #menu .close {
 /* Main */
 
 #main {
-  padding: 0em 0 4em 0;
+  padding: 0 0 4em 0;
 }
 @media screen and (max-width: 736px) {
   #main {
@@ -2438,7 +2439,7 @@ body.is-menu-visible #menu .close {
 /* Footer */
 
 #footer {
-  padding: 5em 0 6em 0;
+  padding: 3em 0 0em 0;
   background-color: #f6f6f6;
 }
 #footer> .inner {
@@ -2469,7 +2470,7 @@ body.is-menu-visible #menu .close {
 #footer> .inner .copyright {
   width: 100%;
   padding: 0;
-  margin-top: 5em;
+  margin-top: 2em;
   list-style: none;
   font-size: 0.8em;
   color: rgba(88, 88, 88, 0.5);
@@ -2491,7 +2492,7 @@ body.is-menu-visible #menu .close {
 }
 @media screen and (max-width: 1280px) {
   #footer {
-      padding: 5em 0 3em 0;
+      padding: 3em 0 0em 0;
   }
   #footer> .inner section:nth-child(1) {
       width: calc(66% - 1.25em);
@@ -2514,7 +2515,7 @@ body.is-menu-visible #menu .close {
 }
 @media screen and (max-width: 736px) {
   #footer {
-      padding: 3em 0 1em 0;
+      padding: 3em 0 0em 0;
   }
   #footer> .inner {
       -moz-flex-direction: column;
@@ -2573,11 +2574,31 @@ body.is-menu-visible #menu .close {
 #canvas {
   width: 100%;
   min-height: 300px;
-  margin: 0 auto;
 }
 .paragraph {
   margin: 20px 0;
 }
 pre {
   margin-top: -20px;
+  margin-bottom: -50px;
+}
+
+/* Sticky footer  */
+
+html, body, #wrapper {
+  height: 100%;
+}
+#main {
+  min-height: 89%;
+  margin-bottom: -280px;
+}
+#main:after {
+  content: "";
+  display: block;
+}
+footer, #main:after {
+  height: 280px;
+}
+h3 {
+  margin-top: 20px;
 }

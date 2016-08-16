@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+  <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+  <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+  <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
   <head>
     <title>dreamingechoes - My p5.js playground</title>
     <meta charset="utf-8" />
@@ -26,27 +26,34 @@
       </header>
 
       <!-- Main -->
-        <div id="main">
-          <div class="inner">
-            <header>
-              <h1>A bunch of example projects made with <a href="https://p5js.org/" target="_blank">p5.js</a></h1>
-            </header>
-            <section class="tiles">
-              <article class="style1">
-                <span class="image">
-                  <img src="dist/images/pic01.jpg" alt="" />
-                </span>
-                <a href="projects/helloworld.html">
-                  <h2>Hello World!</h2>
-                  <div class="content">
-                    <p>The 'Hello World!' of p5.js</p>
-                  </div>
-                </a>
-              </article>
-
-            </section>
+      <div id="main">
+        <div class="inner">
+          <header>
+            <h1>A bunch of examples made with <a href="https://p5js.org/" target="_blank">p5.js</a></h1>
+          </header>
+          <div class="paragraph">
+            As its creators say on their webpage, <b>p5.js</b> is a JS client-side library for creating graphic and interactive experiences, based on the core principles of <b>Processing</b>. This is just a list of examples on how to use it and take advantage of all his functionalities.
+            <br><br>
+            Click on the examples and see how they works:
           </div>
+
+          <section class="projects">
+            <ul class="project-list">
+              <li>
+                <a href="projects/helloworld.html">
+                  Hello World!: Kind of 'Hello World!' of p5.js
+                </a>
+              </li>
+
+              <li>
+                <a href="projects/trexgame.html">
+                  TRex Game: A very simple version of the TRex game of Google Chrome
+                </a>
+              </li>
+            </ul>
+          </section>
         </div>
+      </div>
 
       <!-- Footer -->
       <footer id="footer">
@@ -72,6 +79,6 @@
 
     </div>
 
+    <script src="dist/js/compiled.min.js"></script>
   </body>
-  <script src="dist/js/compiled.min.js"></script>
 </html>
