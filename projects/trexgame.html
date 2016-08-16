@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+  <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+  <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+  <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+  <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <title>dreamingechoes - My p5.js playground</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="stylesheet" href="../dist/css/main.min.css">
+
+    <!-- Code highlight -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  </head>
+
+  <body>
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+      <!-- Header -->
+      <header id="header">
+        <div class="inner">
+          <a href="/my-p5js-playground" class="logo">
+            <span class="title">My p5.js playground</span>
+          </a>
+        </div>
+      </header>
+
+      <!-- Main -->
+      <div id="main">
+        <div class="inner">
+          <h1 class="project-title">TRex Game</h1>
+
+          <div class="paragraph">
+            Just a very simplified version of the TRex game of the Google Chome browser made in p5.js to start playing with more complex concepts.
+          </div>
+
+          <div class="paragraph">Here is the code of the <b>sketch.js</b>, <b>player.js</b>, <b>star.js</b> and <b>obstacle.js</b> file that handle the behavior of this example (you can see all the details on the <a href="https://github.com/dreamingechoes/my-p5js-playground/tree/master/src/vendor/p5js/trexgame">Github repository</a>):</div>
+
+          <h3>sketch.js</h3>
+          <pre>
+            <code class="javascript">
+  var player;
+  var obstacles = [];
+  var stars = [];
+
+  function setup() {
+    initialize();
+  }
+
+  function draw() {
+    background(0);
+
+    for(var i = obstacles.length - 1; i >= 0; i--) {
+      obstacles[i].show();
+      obstacles[i].update();
+
+      if(player.hits(obstacles[i])) {
+        initialize();
+        return false;
+      }
+
+      if(obstacles[i].outOfScreen()) {
+        obstacles.splice(i, 1);
+        player.score += 10;
+      }
+    }
+
+    for(var i = stars.length - 1; i >= 0; i--) {
+      stars[i].show();
+      stars[i].update();
+
+      if(stars[i].outOfScreen()) {
+        stars.splice(i, 1);
+      }
+    }
+
+    player.update();
+    player.show();
+
+    if(frameCount % 80 == 0) {
+      obstacles.push(new Obstacle());
+    }
+
+    if(frameCount % 10 == 0) {
+      stars.push(new Star());
+    }
+  }
+
+  function keyPressed() {
+    if(key == ' ' && player.onBottom()) {
+      player.jump();
+    }
+  }
+
+  function initialize() {
+    obstacles = [];
+    stars = [];
+
+    var canvas = createCanvas(720, 400);
+    canvas.parent('canvas');
+
+    player = new Player();
+    obstacles.push(new Obstacle());
+    stars.push(new Star());
+  }
+            </code>
+          </pre>
+
+          <h3>player.js</h3>
+          <pre>
+            <code class="javascript">
+  function Player() {
+    this.size = 30;
+    this.y = height - this.size;
+    this.x = 48;
+
+    this.gravity = 0.98;
+    this.velocity = 0;
+    this.jump_height = 16;
+    this.score = 0;
+
+    this.show = function() {
+      fill(255);
+      rect(this.x, this.y, this.size, this.size);
+
+      textSize(14);
+      text("SCORE: " + this.score, 20, 30);
+    }
+
+    this.update = function() {
+      this.velocity += this.gravity;
+      this.y += this.velocity;
+
+      if((this.y + this.size) > height) {
+        this.y = height - this.size;
+        this.velocity = 0;
+      }
+    }
+
+    this.onBottom = function() {
+      return this.y == (height - this.size);
+    }
+
+    this.jump = function() {
+      this.velocity -= this.jump_height;
+    }
+
+    this.hits = function(obstacle) {
+      if((obstacle.x >= this.x) && (obstacle.x <= (this.x + this.size)) &&
+         ((this.y + this.size) >= (height - obstacle.height))) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+            </code>
+          </pre>
+
+          <h3>star.js</h3>
+          <pre>
+            <code class="javascript">
+  function Star() {
+    this.x = width;
+    this.y = random(300);
+    this.speed = 2;
+
+    this.show = function() {
+      fill(255);
+      ellipse(this.x, this.y, 3, 3);
+    }
+
+    this.update = function() {
+      this.x -= this.speed;
+    }
+
+    this.outOfScreen = function() {
+      return (this.x < -this.width ? true : false);
+    }
+  }
+            </code>
+          </pre>
+
+          <h3>obstacle.js</h3>
+          <pre>
+            <code class="javascript">
+  function Obstacle() {
+    this.x = width;
+    this.height = random(80) + 20;
+    this.width = 30;
+    this.speed = 6;
+
+    this.show = function() {
+      fill(192);
+      rect(this.x, (height - this.height), this.width, this.height);
+    }
+
+    this.update = function() {
+      this.x -= this.speed;
+    }
+
+    this.outOfScreen = function() {
+      return (this.x < -this.width ? true : false);
+    }
+  }
+            </code>
+          </pre>
+
+          <div class="paragraph">
+            This is the result (press SPACE to jump):
+          </div>
+
+          <div id="canvas"></div>
+
+          <div class="paragraph">
+            <a href="/my-p5js-playground">&laquo; Go Back</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer id="footer">
+        <div class="inner">
+          <section>
+            <h2>Get in touch!</h2>
+            <ul class="icons">
+              <li><a href="http://dreamingecho.es" class="icon style2 fa-desktop" target="_blank" title="Website"><span class="label">Website</span></a></li>
+              <li><a href="http://github.com/dreamingechoes" class="icon style2 fa-github" target="_blank" title="Github"><span class="label">GitHub</span></a></li>
+              <li><a href="http://linkedin.com/in/ivangonzalezsaiz" class="icon style2 fa-linkedin" target="_blank" title="LinkedIn"><span class="label">LinkedIn</span></a></li>
+              <li><a href="http://resume.dreamingecho.es" class="icon style2 fa-file-text-o" target="_blank" title="My Online Resume"><span class="label">My Online Resume</span></a></li>
+              <li><a href="http://twitter.com/dreamingechoes" class="icon style2 fa-twitter" target="_blank" title="Twitter"><span class="label">Twitter</span></a></li>
+              <li><a href="https://www.youtube.com/channel/UC3tlVL4BPcimrIEs67H8Dzg" class="icon style2 fa-youtube" target="_blank" title="Youtube"><span class="label">Youtube</span></a></li>
+              <li><a href="http://stackoverflow.com/users/5218888/iv%C3%A1n-gonz%C3%A1lez" class="icon style2 fa-stack-overflow" target="_blank" title="StackOverflow"><span class="label">StackOverflow</span></a></li>
+              <li><a href="mailto:hi@dreamingecho.es" class="icon style2 fa-envelope-o" target="_blank" title="Email me!"><span class="label">Email</span></a></li>
+            </ul>
+          </section>
+          <ul class="copyright">
+            <li>&copy; <a href="http://dreamingecho.es">dreamingechoes</a></li>
+          </ul>
+        </div>
+      </footer>
+
+    </div>
+
+  </body>
+  <script src="../dist/js/compiled.min.js"></script>
+  <script src="../dist/p5js/source/p5.min.js"></script>
+  <script src="../dist/p5js/source/addons/p5.dom.js"></script>
+  <script src="../dist/p5js/source/addons/p5.sound.js"></script>
+  <script src="../dist/p5js/trexgame/player.js"></script>
+  <script src="../dist/p5js/trexgame/obstacle.js"></script>
+  <script src="../dist/p5js/trexgame/star.js"></script>
+  <script src="../dist/p5js/trexgame/sketch.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</html>
