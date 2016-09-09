@@ -29,10 +29,9 @@ function draw() {
   }
 
   for(var i = 0; i < points.length; i++) {
-    if(points[i]==point) {
+    if(points[i] == point) {
       fill(255, 0, 0);
       ellipse(i, (points[i]*50) + 100, 6, 6);
-
     } else {
       fill(255);
       ellipse(i, (points[i]*50) + 100, 2, 2);
