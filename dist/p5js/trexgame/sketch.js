@@ -46,7 +46,6 @@ function draw() {
 }
 
 function keyPressed() {
-  console.log(keyCode);
   if(keyCode == 87 && player.onBottom()) {
     player.jump();
   }
