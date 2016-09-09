@@ -9,7 +9,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <link rel="stylesheet" href="dist/css/main.min.css">
+    <link rel="stylesheet" href="../dist/css/main.min.css">
+
+    <!-- Code highlight -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
   </head>
 
   <body>
@@ -19,7 +22,7 @@
       <!-- Header -->
       <header id="header">
         <div class="inner">
-          <a href="#" class="logo">
+          <a href="/my-p5js-playground" class="logo">
             <span class="title">My p5.js playground</span>
           </a>
         </div>
@@ -28,36 +31,20 @@
       <!-- Main -->
       <div id="main">
         <div class="inner">
-          <header>
-            <h1>A bunch of examples made with <a href="https://p5js.org/" target="_blank">p5.js</a></h1>
-          </header>
+          <h1 class="project-title">Mathematica Formulae</h1>
+
           <div class="paragraph">
-            As its creators say on their webpage, <b>p5.js</b> is a JS client-side library for creating graphic and interactive experiences, based on the core principles of <b>Processing</b>. This is just a list of examples on how to use it and take advantage of all his functionalities.
-            <br><br>
-            Click on the examples and see how they works:
+            A list of visualizations of some mathematical functions and formulas. You can see all the details of this <strong>sketch.js</strong> on the <a href="https://github.com/dreamingechoes/my-p5js-playground/tree/master/src/vendor/p5js/mathematica_formulae">Github repository</a>.
           </div>
 
-          <section class="projects">
-            <ul class="project-list">
-              <li>
-                <a href="projects/helloworld.html">
-                  Hello World!: Kind of 'Hello World!' of p5.js
-                </a>
-              </li>
+          <div class="paragraph">
+            Sine(x):
+          </div>
+          <div id="sin"></div>
 
-              <li>
-                <a href="projects/trexgame.html">
-                  TRex Game: A very simple version of the TRex game of Google Chrome
-                </a>
-              </li>
-
-              <li>
-                <a href="projects/mathematica_formulae.html">
-                  Mathematica Formulae: A list of visualizations of some mathematical formulas
-                </a>
-              </li>
-            </ul>
-          </section>
+          <div class="paragraph">
+            <a href="/my-p5js-playground">&laquo; Go Back</a>
+          </div>
         </div>
       </div>
 
@@ -85,6 +72,12 @@
 
     </div>
 
-    <script src="dist/js/compiled.min.js"></script>
   </body>
+  <script src="../dist/js/compiled.min.js"></script>
+  <script src="../dist/p5js/source/p5.min.js"></script>
+  <script src="../dist/p5js/source/addons/p5.dom.js"></script>
+  <script src="../dist/p5js/source/addons/p5.sound.js"></script>
+  <script src="../dist/p5js/mathematica_formulae/sketch.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
 </html>

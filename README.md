@@ -9,3 +9,4 @@ You can download the HTML template I've used to present all the examples here: [
 * [Index](http://dreamingechoes.github.io/my-p5js-playground)
 * [Hello world!](http://dreamingechoes.github.io/my-p5js-playground/projects/helloworld.html)
 * [TRex Game](http://dreamingechoes.github.io/my-p5js-playground/projects/trexgame.html)
+* [Mathematica Formulae](http://dreamingechoes.github.io/my-p5js-playground/projects/mathematica_formulae.html)
